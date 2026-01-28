@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>drinegallery</title>
+
+<!-- Lightbox CSS -->
+<link href="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.css" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Neue Montreal", sans-serif;
+}
+
+body {
+  background: #ffBF00;
+  color: #111;
+}
+
+/* NAV */
+nav {
+  padding: 20px 25px;
+  border-bottom: 2px solid #000;
+  display: flex;
+  gap: 30px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+/* HERO */
+.hero {
+  padding: 140px 25px 100px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* SECTIONS */
+section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 100px 25px;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  max-width: 600px;
+  margin-bottom: 40px;
+  font-size: 1rem;
+}
+
+/* SERIES */
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.series-card {
+  background: #fff;
+  border: 2px solid #000;
+  padding: 20px;
+}
+
+.series-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.series-card p {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.series-card a {
+  font-size: 0.9rem;
+  text-decoration: underline;
+  color: #000;
+}
+
+/* PREVIEWS */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.preview-grid a {
+  display: block;
+  border: 0px solid #000;
+  background: ;
+}
+
+.preview-grid img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.preview-grid a:hover img {
+  transform: scale(1.03);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.8rem;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Home</a>
+  <a href="prints.html">Prints</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>drinegallery</h1>
+  <p>where ideas learn to breathe</p>
+</div>
+
+<!-- SERIES -->
+<section>
+  <h2>PRINTS</h2>
+  <p class="section-desc">
+    made by drinegallery.
+  </p>
+
+  <div class="series-grid">
+    <div class="series-card">
+      <h3>ANDALUCIA</h3>
+      <p>IV OF SPADES' NEW ALBUM SERIES.</p>
+      <a href="ivos.html">View series →</a>
+    </div>
+
+    <div class="series-card">
+      <h3>NEW POSTERS!</h3>
+      <p>DRINEGALLERY'S CLASSIC POSTERS.</p>
+      <a href="andalucia.html">View posters →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLICKABLE PREVIEWS -->
+<section>
+  <h2>ANDALUCIA SERIES. OUT NOW.</h2>
+  <p class="section-desc">
+    ANDALUCIA SERIES PREVIEW.
+  </p>
+
+  <div class="preview-grid">
+    <a href="TARA.jpg" class="preview-link"><img src="TARA.jpg" alt="TARA"></a>
+    <a href="TANGERINE.jpg" class="preview-link"><img src="TANGERINE.jpg" alt="Tangerine Boulevard"></a>
+    <a href="KARMA 1.jpg" class="preview-link"><img src="KARMA 1.jpg" alt="Karma"></a>
+    <a href="AURA.jpg" class="preview-link"><img src="AURA.jpg" alt="Aura"></a>
+    <a href="PARU-PARO.jpg" class="preview-link"><img src="PARU-PARO.jpg" alt="Paru-paro"></a>
+    <a href="REWIND.jpg" class="preview-link"><img src="REWIND.jpg" alt="Rewind"></a>
+  </div>
+</section>
+
+<footer>
+  © 2026 · drinegallery
+</footer>
+
+<!-- Lightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.js"></script>
+<script>
+  new SimpleLightbox('.preview-link');
+</script>
+
+</body>
+</html>
