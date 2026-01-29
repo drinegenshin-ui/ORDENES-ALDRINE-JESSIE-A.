@@ -120,6 +120,12 @@ section h2 {
   transform: scale(1.03);
 }
 
+/* Announcement bar */
+    .announcement-bar { width: 100%; overflow: hidden; background: #1e3a8a; color: #ffffff; padding: 16px 0; position: relative; z-index: 10; }
+    .announcement-track { display: flex; width: max-content; animation: marquee 8s linear infinite; font-size: 1.2rem; font-weight: 500; letter-spacing: 0.2px; }
+    .announcement-track span { white-space: nowrap; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
+  
 /* FOOTER */
 footer {
   text-align: center;
@@ -130,6 +136,16 @@ footer {
 </head>
 
 <body>
+
+<!-- Moving announcement bar -->
+<div class="announcement-bar">
+  <div class="announcement-track">
+    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <span>ANDALUCIA SERIES ARE OUT NOW!&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <span>ANDALUCIA SERIES ARE OUT NOW!&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -195,3 +211,4 @@ footer {
 
 </body>
 </html>
+
