@@ -15,9 +15,25 @@
   font-family: "Neue Montreal", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #ffBF00;
   color: #111;
+}
+
+/* ================= ANIMATIONS ================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* NAV */
@@ -26,12 +42,34 @@ nav {
   border-bottom: 2px solid #000;
   display: flex;
   gap: 30px;
+  animation: slideDown 0.8s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 nav a {
   text-decoration: none;
   color: #000;
   font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #000;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* HERO */
@@ -41,12 +79,19 @@ nav a {
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 10rem;
   margin-bottom: 10px;
+  animation: fadeScale 1s ease forwards;
 }
 
 .hero p {
   font-size: 1.1rem;
+  animation: fadeScale 1.2s ease forwards;
+}
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* SECTIONS */
@@ -78,6 +123,12 @@ section h2 {
   background: #fff;
   border: 2px solid #000;
   padding: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.series-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 8px 8px 0 #000;
 }
 
 .series-card h3 {
@@ -105,32 +156,52 @@ section h2 {
 
 .preview-grid a {
   display: block;
-  border: 0px solid #000;
-  background: ;
+  overflow: hidden;
 }
 
 .preview-grid img {
   width: 100%;
   height: 280px;
   object-fit: cover;
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
 }
 
 .preview-grid a:hover img {
-  transform: scale(1.03);
+  transform: scale(1.08);
 }
 
 /* Announcement bar */
-    .announcement-bar { width: 100%; overflow: hidden; background: #1e3a8a; color: #ffffff; padding: 16px 0; position: relative; z-index: 10; }
-    .announcement-track { display: flex; width: max-content; animation: marquee 8s linear infinite; font-size: 1.2rem; font-weight: 500; letter-spacing: 0.2px; }
-    .announcement-track span { white-space: nowrap; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-33.333%); } }
-  
+.announcement-bar {
+  width: 100%;
+  overflow: hidden;
+  background: #1e3a8a;
+  color: #ffffff;
+  padding: 16px 0;
+}
+
+.announcement-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 12s linear infinite;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.announcement-track span {
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* FOOTER */
 footer {
   text-align: center;
   padding: 40px 20px;
   font-size: 0.8rem;
+  opacity: 0.7;
 }
 </style>
 </head>
@@ -140,10 +211,10 @@ footer {
 <!-- Moving announcement bar -->
 <div class="announcement-bar">
   <div class="announcement-track">
-    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <span>ANDALUCIA SERIES ARE OUT NOW!&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-    <span>ANDALUCIA SERIES ARE OUT NOW!&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^ • </span>
+    <span>ANDALUCIA SERIES ARE OUT NOW! • </span>
+    <span>THANK YOU GUYS FOR VIEWING MY POSTERS! IT MEANS A LOT TO ME ^-^ • </span>
+    <span>ANDALUCIA SERIES ARE OUT NOW! • </span>
   </div>
 </div>
 
@@ -161,11 +232,9 @@ footer {
 </div>
 
 <!-- SERIES -->
-<section>
+<section class="fade-up">
   <h2>PRINTS</h2>
-  <p class="section-desc">
-    made by drinegallery.
-  </p>
+  <p class="section-desc">made by drinegallery.</p>
 
   <div class="series-grid">
     <div class="series-card">
@@ -182,20 +251,18 @@ footer {
   </div>
 </section>
 
-<!-- CLICKABLE PREVIEWS -->
-<section>
+<!-- PREVIEWS -->
+<section class="fade-up">
   <h2>ANDALUCIA SERIES. OUT NOW.</h2>
-  <p class="section-desc">
-    ANDALUCIA SERIES PREVIEW.
-  </p>
+  <p class="section-desc">ANDALUCIA SERIES PREVIEW.</p>
 
   <div class="preview-grid">
-    <a href="TARA.jpg" class="preview-link"><img src="TARA.jpg" alt="TARA"></a>
-    <a href="TANGERINE.jpg" class="preview-link"><img src="TANGERINE.jpg" alt="Tangerine Boulevard"></a>
-    <a href="KARMA 1.jpg" class="preview-link"><img src="KARMA 1.jpg" alt="Karma"></a>
-    <a href="AURA.jpg" class="preview-link"><img src="AURA.jpg" alt="Aura"></a>
-    <a href="PARU-PARO.jpg" class="preview-link"><img src="PARU-PARO.jpg" alt="Paru-paro"></a>
-    <a href="REWIND.jpg" class="preview-link"><img src="REWIND.jpg" alt="Rewind"></a>
+    <a href="TARA.jpg" class="preview-link"><img src="TARA.jpg"></a>
+    <a href="TANGERINE.jpg" class="preview-link"><img src="TANGERINE.jpg"></a>
+    <a href="KARMA 1.jpg" class="preview-link"><img src="KARMA 1.jpg"></a>
+    <a href="AURA.jpg" class="preview-link"><img src="AURA.jpg"></a>
+    <a href="PARU-PARO.jpg" class="preview-link"><img src="PARU-PARO.jpg"></a>
+    <a href="REWIND.jpg" class="preview-link"><img src="REWIND.jpg"></a>
   </div>
 </section>
 
@@ -203,12 +270,23 @@ footer {
   © 2026 · drinegallery
 </footer>
 
-<!-- Lightbox JS -->
+<!-- Lightbox -->
 <script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.js"></script>
 <script>
   new SimpleLightbox('.preview-link');
+
+  /* Scroll reveal */
+  const elements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  elements.forEach(el => observer.observe(el));
 </script>
 
 </body>
 </html>
-
