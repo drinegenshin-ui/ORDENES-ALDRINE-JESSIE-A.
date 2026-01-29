@@ -20,34 +20,75 @@ body {
   color: #111;
 }
 
+/* ================= ANIMATIONS ================= */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* NAV */
 nav {
   padding: 20px 25px;
   border-bottom: 2px solid #fff;
+  animation: slideDown 0.7s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-25px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 nav a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 /* HEADER */
 .header {
-  padding: 80px 25px 40px;
+  padding: 90px 25px 40px;
   max-width: 1200px;
   margin: auto;
 }
 
 .header h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   margin-bottom: 6px;
   color: #fff;
+  animation: fadeScale 1s ease forwards;
 }
 
 .header p {
   font-size: 1rem;
   color: #fff;
+  animation: fadeScale 1.2s ease forwards;
+}
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /* GALLERY */
@@ -57,12 +98,20 @@ nav a {
   padding: 40px 25px 100px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
+/* CARD */
 .card {
   background: #fff;
   border: 2px solid #fff;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 12px 12px 0 rgba(0,0,0,0.25);
 }
 
 .card img {
@@ -70,13 +119,14 @@ nav a {
   height: 340px;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
 }
 
-.card :hover img {
-  transform: scale(1.03);
+.card:hover img {
+  transform: scale(1.08);
 }
 
+/* INFO */
 .card-info {
   padding: 16px;
 }
@@ -90,6 +140,21 @@ nav a {
   font-size: 0.85rem;
   color: #444;
 }
+
+/* Stagger effect */
+.card:nth-child(1) { transition-delay: 0.05s; }
+.card:nth-child(2) { transition-delay: 0.05s; }
+.card:nth-child(3) { transition-delay: 0.05s; }
+.card:nth-child(4) { transition-delay: 0.05s; }
+.card:nth-child(5) { transition-delay: 0.05s; }
+.card:nth-child(6) { transition-delay: 0.05s; }
+.card:nth-child(7) { transition-delay: 0.05s; }
+.card:nth-child(8) { transition-delay: 0.05s; }
+.card:nth-child(9) { transition-delay: 0.05s; }
+.card:nth-child(10){ transition-delay: 0.05s; }
+.card:nth-child(11){ transition-delay: 0.05s; }
+.card:nth-child(12){ transition-delay: 0.05s; }
+
 </style>
 </head>
 
@@ -103,102 +168,44 @@ nav a {
 <!-- HEADER -->
 <div class="header">
   <h1>ANDALUCIA SERIES</h1>
-  <p>IV OF SPADES' NEW ALBUM OUT NOW WITH POSTERS!.</p>
+  <p>IV OF SPADES' NEW ALBUM OUT NOW WITH POSTERS!</p>
 </div>
 
 <!-- GALLERY -->
-<div class="gallery">
+<div class="gallery fade-up">
 
-  <div class="card">
-    <a href="TARA.jpg" class="ivos-link">
-      <img src="TARA.jpg" alt="TARA">
-    </a>
-    <div class="card-info"><h3>TARA</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="MONSTER.jpg" class="ivos-link">
-      <img src="MONSTER.jpg" alt="MONSTER">
-    </a>
-    <div class="card-info"><h3>MONSTER</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="PARU-PARO.jpg" class="ivos-link">
-      <img src="PARU-PARO.jpg" alt="PARU-PARO">
-    </a>
-    <div class="card-info"><h3>PARU-PARO</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="NANAMAN.jpg" class="ivos-link">
-      <img src="NANAMAN.jpg" alt="NANAMAN">
-    </a>
-    <div class="card-info"><h3>NANAMAN</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="KONSENSYA.jpg" class="ivos-link">
-      <img src="KONSENSYA.jpg" alt="KONSENSYA">
-    </a>
-    <div class="card-info"><h3>KONSENSYA</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="TAMIS.jpg" class="ivos-link">
-      <img src="TAMIS.jpg" alt="TAMIS NG PAGKAKAMALI">
-    </a>
-    <div class="card-info"><h3>TAMIS NG PAGKAKAMALI</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="AURA.jpg" class="ivos-link">
-      <img src="AURA.jpg" alt="AURA">
-    </a>
-    <div class="card-info"><h3>AURA</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="KARMA 1.jpg" class="ivos-link">
-      <img src="KARMA 1.jpg" alt="KARMA">
-    </a>
-    <div class="card-info"><h3>KARMA</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="TANGERINE.jpg" class="ivos-link">
-      <img src="TANGERINE.jpg" alt="TANGERINE BOULEVARD">
-    </a>
-    <div class="card-info"><h3>TANGERINE BOULEVARD</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="KABISADO.jpg" class="ivos-link">
-      <img src="KABISADO.jpg" alt="KABISADO">
-    </a>
-    <div class="card-info"><h3>KABISADO</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="REWIND.jpg" class="ivos-link">
-      <img src="REWIND.jpg" alt="REWIND">
-    </a>
-    <div class="card-info"><h3>REWIND</h3><p>2025</p></div>
-  </div>
-
-  <div class="card">
-    <a href="SULIRANIN.jpg" class="ivos-link">
-      <img src="SULIRANIN.jpg" alt="SULIRANIN">
-    </a>
-    <div class="card-info"><h3>SULIRANIN</h3><p>2025</p></div>
-  </div>
+  <!-- CARD TEMPLATE -->
+  <div class="card"><a href="TARA.jpg" class="ivos-link"><img src="TARA.jpg"></a><div class="card-info"><h3>TARA</h3><p>2025</p></div></div>
+  <div class="card"><a href="MONSTER.jpg" class="ivos-link"><img src="MONSTER.jpg"></a><div class="card-info"><h3>MONSTER</h3><p>2025</p></div></div>
+  <div class="card"><a href="PARU-PARO.jpg" class="ivos-link"><img src="PARU-PARO.jpg"></a><div class="card-info"><h3>PARU-PARO</h3><p>2025</p></div></div>
+  <div class="card"><a href="NANAMAN.jpg" class="ivos-link"><img src="NANAMAN.jpg"></a><div class="card-info"><h3>NANAMAN</h3><p>2025</p></div></div>
+  <div class="card"><a href="KONSENSYA.jpg" class="ivos-link"><img src="KONSENSYA.jpg"></a><div class="card-info"><h3>KONSENSYA</h3><p>2025</p></div></div>
+  <div class="card"><a href="TAMIS.jpg" class="ivos-link"><img src="TAMIS.jpg"></a><div class="card-info"><h3>TAMIS NG PAGKAKAMALI</h3><p>2025</p></div></div>
+  <div class="card"><a href="AURA.jpg" class="ivos-link"><img src="AURA.jpg"></a><div class="card-info"><h3>AURA</h3><p>2025</p></div></div>
+  <div class="card"><a href="KARMA 1.jpg" class="ivos-link"><img src="KARMA 1.jpg"></a><div class="card-info"><h3>KARMA</h3><p>2025</p></div></div>
+  <div class="card"><a href="TANGERINE.jpg" class="ivos-link"><img src="TANGERINE.jpg"></a><div class="card-info"><h3>TANGERINE BOULEVARD</h3><p>2025</p></div></div>
+  <div class="card"><a href="KABISADO.jpg" class="ivos-link"><img src="KABISADO.jpg"></a><div class="card-info"><h3>KABISADO</h3><p>2025</p></div></div>
+  <div class="card"><a href="REWIND.jpg" class="ivos-link"><img src="REWIND.jpg"></a><div class="card-info"><h3>REWIND</h3><p>2025</p></div></div>
+  <div class="card"><a href="SULIRANIN.jpg" class="ivos-link"><img src="SULIRANIN.jpg"></a><div class="card-info"><h3>SULIRANIN</h3><p>2025</p></div></div>
 
 </div>
 
-<!-- Lightbox JS -->
+<!-- Lightbox -->
 <script src="https://cdn.jsdelivr.net/npm/simplelightbox/dist/simple-lightbox.min.js"></script>
 <script>
   new SimpleLightbox('.ivos-link');
+
+  /* Scroll reveal */
+  const gallery = document.querySelector('.fade-up');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  observer.observe(gallery);
 </script>
 
 </body>
